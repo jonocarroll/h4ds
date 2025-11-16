@@ -28,7 +28,7 @@ jobs:
 
       - name: Install dataframe
         run: |
-          cabal install dataframe
+          cabal build --dependencies-only
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
