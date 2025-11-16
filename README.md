@@ -1,4 +1,4 @@
-# R for Data Science
+# Haskell for Data Science
 
 <!-- badges: start -->
 
@@ -6,59 +6,15 @@
 
 <!-- badges: end -->
 
-This repository contains the source of [R for Data Science](http://r4ds.hadley.nz) book.
+This repository contains the source of [Haskell for Data Science](https://jonocarroll.github.io/h4ds/), an adaptation of [R for Data Science](http://r4ds.hadley.nz) book.
 The book is built using [Quarto](https://quarto.org/).
 
-## Images
+This book is part of the [DataHaskell](https://www.datahaskell.org/) project and is currently a work in progress.
 
-### Omnigraffle drawings
+## Translations
 
--   Font: 12pt Guardian Sans Condensed / Ubuntu mono
-
--   Export as 300 dpi png.
-
--   Website font is 18 px = 13.5 pt, so scale dpi to match font sizes: 270 = 300 \* 12 / 13.5.
-    (I also verified this empirically by screenshotting.)
-
-    ``` r
-    #| echo: FALSE
-    #| out.width: NULL
-    knitr::include_graphics("diagrams/transform.png", dpi = 270)
-    ```
-
-### Screenshots
-
--   Make sure you're using a light theme.
-    For small interface elements (eg. toolbars), zoom in twice.
-
--   Screenshot with Cmd + Shift + 4.
-
--   Don't need to set dpi:
-
-    ``` r
-    #| echo: FALSE
-    #| out.width: NULL
-    knitr::include_graphics("screenshots/rstudio-wg.png")
-    ```
-
-### O'Reilly
-
-To generate book for O'Reilly, build the book then:
-
-```{r}
-# pak::pak("hadley/htmlbook")
-htmlbook::convert_book()
-
-html <- list.files("oreilly", pattern = "[.]html$", full.names = TRUE)
-file.copy(html, "../r-for-data-science-2e/", overwrite = TRUE)
-
-pngs <- list.files("oreilly", pattern = "[.]png$", full.names = TRUE, recursive = TRUE)
-dest <- gsub("oreilly", "../r-for-data-science-2e/", pngs)
-fs::dir_create(unique(dirname(dest)))
-file.copy(pngs, dest, overwrite = TRUE)
-```
-
-Then commit and push to atlas.
+Our goal is to 'translate' each section of R4DS into Haskell, leveraging the tools of DataHaskell, e.g. [dataframe](https://dataframe.readthedocs.io/en/latest/).
+If you spot any errors, deficiencies, or can identify some improvements, feel free to open an [Issue](https://github.com/jonocarroll/h4ds/issues).
 
 ## Code of Conduct
 
