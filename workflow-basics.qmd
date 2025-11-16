@@ -92,11 +92,13 @@ This takes a (curried) function (one which is "waiting" for an argument to be ap
 ### Haskell
 
 ```{haskell}
+#| echo: -1
 primes = [2, 3, 5, 7, 11, 13]
 map (*2) primes
 ```
 
 ```{haskell}
+#| echo: -1
 primes = [2, 3, 5, 7, 11, 13]
 map (subtract 1) primes
 ```
