@@ -16,5 +16,5 @@ This website is and will always be free, licensed under the [CC BY-NC-ND 3.0](ht
 
 <!-- You can find suggested answers to exercises in the book at <https://mine-cetinkaya-rundel.github.io/r4ds-solutions>. -->
 
-Please note that R4DS uses a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+Please note that H4DS uses a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this book, you agree to abide by its terms.
