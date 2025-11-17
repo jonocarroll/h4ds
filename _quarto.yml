@@ -3,19 +3,18 @@ project:
   output-dir: _book
 
 book:
-  title: "R for Data Science (2e)"
+  title: "Haskell for Data Science"
   reader-mode: true
 
   page-footer:
     left: |
-      R for Data Science (2e) was written by Hadley Wickham, Mine
-      Çetinkaya-Rundel, and Garrett Grolemund.
+      Haskell for Data Science was translated from R (R4DS) by Jonathan Carroll (WIP).
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
   cover-image: cover.jpg
   favicon: cover.jpg
-  site-url: https://r4ds.hadley.nz/
-  repo-url: https://github.com/hadley/r4ds/
+  site-url: https://jonocarroll.github.io/h4ds/
+  repo-url: https://github.com/jonocarroll/h4ds
   repo-branch: main
   repo-actions: [edit, issue]
   chapters:
@@ -78,7 +77,7 @@ format:
       - r4ds.scss
     code-link: true
 
-    author-meta: "Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund"
+    author-meta: "Jonathan Carroll"
     include-in-header: "plausible.html"
     callout-appearance: simple
 
