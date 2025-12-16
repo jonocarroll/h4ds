@@ -60,14 +60,30 @@ status <- function(type) {
   ))
 }
 
+# knitr::knit_engines$set(haskell = function(options) {
+#   code <- options$code
+#   codefile <- tempfile(fileext = ".hs")
+#   on.exit(file.remove(codefile))
+#   writeLines(c(":set +m", ":set -XOverloadedStrings", "", code), con = codefile)
+#   out  <- system2(
+#     file.path(path.expand('~'), '.ghcup/bin/ghc'),
+#     c('-package dataframe', '-e',"':script ", codefile, "'"),
+#     stdout = TRUE
+#   )
+#
+#   knitr::engine_output(options, code, out)
+# })
+
 knitr::knit_engines$set(haskell = function(options) {
   code <- options$code
   codefile <- tempfile(fileext = ".hs")
-  on.exit(file.remove(codefile))
-  writeLines(c(":set +m", ":set -XOverloadedStrings", "", code), con = codefile)
+  codefile_brace <- tempfile(fileext = ".hs")
+  on.exit(file.remove(codefile, codefile_brace))
+  writeLines(c(":script _dataframe", "", code), con = codefile)
+  system2('./_hscript', codefile, stdout = codefile_brace)
   out  <- system2(
     file.path(path.expand('~'), '.ghcup/bin/ghc'),
-    c('-package dataframe', '-e',"':script ", codefile, "'"),
+    c('-e',"':script ", codefile_brace, "'"),
     stdout = TRUE
   )
 

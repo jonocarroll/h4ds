@@ -41,7 +41,9 @@ An alternative way to write "parenthesise everything to the right" is to use `$`
 
 ```{r}
 1 / 200 * 30
+
 (59 + 73 + 2) / 3
+
 sin(pi / 2)
 ```
 :::
@@ -74,6 +76,7 @@ You can combine multiple elements into a 'vector' with a list, encased in `[]`:
 
 ```{haskell}
 primes = [2, 3, 5, 7, 11, 13]
+
 primes
 ```
 
@@ -81,6 +84,7 @@ primes
 
 ```{r}
 primes <- c(2, 3, 5, 7, 11, 13)
+
 primes
 ```
 :::
@@ -91,19 +95,19 @@ This takes a (curried) function (one which is "waiting" for an argument to be ap
 ::: panel-tabset
 ### Haskell
 
-```{haskell}
-#| echo: -1
+```{haskell, echo = -c(1:2)}
 primes = [2, 3, 5, 7, 11, 13]
+
 map (*2) primes
 ```
 
-```{haskell}
-#| echo: -1
+```{haskell, echo = -c(1:2)}
 primes = [2, 3, 5, 7, 11, 13]
+
 map (subtract 1) primes
 ```
 
-`subtract` is used here because `(-1)` is treated as the *value* `-1` not the operation 'subtract 1'.
+`subtract` is used here because `(-1)` is treated as a *value* of `-1` not the operation 'subtract 1'.
 
 ### R
 
@@ -111,31 +115,81 @@ In R, basic arithmetic on vectors is applied to every element of the vector
 
 ```{r}
 primes * 2
+
 primes - 1
 ```
 :::
 
-All R statements where you create objects, **assignment** statements, have the same form:
+Haskell uses the equals sign for assignment where you create objects, and you can be specific about the type here if you need to.
+It's worth noting that Haskell uses `Num` for numbers (in general) and has more specific `Int` (integer) and `Double` (double-precision).
 
-```{r}
-#| eval: false
-object_name <- value
+::: panel-tabset
+### Haskell
+
+```{haskell}
+sevenDefault = 7
+
+:t sevenDefault
 ```
 
-When reading that code, say "object name gets value" in your head.
+```{haskell}
+sevenInt = 7 :: Int
 
-You will make lots of assignments, and `<-` is a pain to type.
-You can save time with RStudio's keyboard shortcut: Alt + - (the minus sign).
-Notice that RStudio automatically surrounds `<-` with spaces, which is a good code formatting practice.
-Code can be miserable to read on a good day, so giveyoureyesabreak and use spaces.
+:t sevenInt
+```
+
+```{haskell}
+sevenDbl = 7 :: Double
+
+:t sevenDbl
+```
+
+### R
+
+```{r}
+seven_default <- 7
+class(seven_default)
+
+seven_int <- 7L
+class(seven_int)
+
+seven_num <- 7
+class(seven_num)
+```
+:::
+
+When reading that code, say "seven default gets value 7" in your head.
+
+Code can be miserable to read on a good day, so giveyoureyesabreak and use spaces, especially either side of a binary operator (like `+` or `=`).
 
 ## Comments
 
-R will ignore any text after `#` for that line.
-This allows you to write **comments**, text that is ignored by R but read by other humans.
+Haskell will ignore any text after `--` for that line.
+This allows you to write **comments**, text that is ignored by Haskell but read by other humans.
 We'll sometimes include comments in examples explaining what's happening with the code.
+For multi-line comments can be enclosed in `{-` and `-}`, which do not exist in R.
 
 Comments can be helpful for briefly describing what the following code does.
+
+::: panel-tabset
+### Haskell
+
+```{haskell}
+-- create list of primes
+primes = [2, 3, 5, 7, 11, 13]
+
+-- multiply primes by 2
+map (*2) primes
+```
+
+```{haskell}
+{-
+  !! this is a block comment !!
+  !!   and will be ignored   !!
+-}
+```
+
+### R
 
 ```{r}
 # create vector of primes
@@ -144,6 +198,7 @@ primes <- c(2, 3, 5, 7, 11, 13)
 # multiply primes by 2
 primes * 2
 ```
+:::
 
 With short pieces of code like this, leaving a comment for every single line of code might not be necessary.
 But as the code you're writing gets more complex, comments can save you (and your collaborators) a lot of time figuring out what was done in the code.
@@ -163,19 +218,13 @@ There's no way to re-capture this knowledge from the code itself.
 
 Object names must start with a letter and can only contain letters, numbers, `_`, and `.`.
 You want your object names to be descriptive, so you'll need to adopt a convention for multiple words.
-We recommend **snake_case**, where you separate lowercase words with `_`.
-
-```{r}
-#| eval: false
-i_use_snake_case
-otherPeopleUseCamelCase
-some.people.use.periods
-And_aFew.People_RENOUNCEconvention
-```
+We recommend **camelCase** for variables, where the first letter is lowercase and the start of any subsequent words is capitalised, but with no separator.
+For data types (which we'll cover later) use upper camel case e.g.
+`DataType` or `Point`.
 
 We'll return to names again when we discuss code style in @sec-workflow-style.
 
-You can inspect an object by typing its name:
+In `ghci` you can inspect an object by typing its name:
 
 ```{r}
 x

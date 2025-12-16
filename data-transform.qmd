@@ -73,7 +73,17 @@ We'll discuss the pipe more in @sec-the-pipe, but in brief, the pipe takes the t
 The easiest way to pronounce the pipe is "then".
 That makes it possible to get a sense of the following code even though you haven't yet learned the details:
 
-:::: panel-tabset
+::: panel-tabset
+#### Haskell
+
+```{haskell}
+D.fromNamedColumns [
+  ("A", D.fromList (replicate 4 1.0)),
+  ("B", D.fromList (replicate 4 (1.0 :: Float))),
+  ("C", D.fromList (replicate 4 (3 :: Int))),
+  ("D", D.fromList (replicate 4 "foo"))]
+```
+
 #### R
 
 ```{r}
@@ -85,18 +95,7 @@ flights |>
     arr_delay = mean(arr_delay, na.rm = TRUE)
   )
 ```
-
-#### Haskell
-
-```{haskell}
-import qualified DataFrame as D
-
-D.fromNamedColumns [
-  ("A", D.fromList (replicate 4 1.0)),
-  ("B", D.fromList (replicate 4 (1.0 :: Float))),
-  ("C", D.fromList (replicate 4 (3 :: Int))),
-  ("D", D.fromList (replicate 4 "foo"))]
-```
+:::
 
 dplyr's verbs are organized into four groups based on what they operate on: **rows**, **columns**, **groups**, or **tables**.
 In the following sections, you'll learn the most important verbs for rows, columns, and groups.
@@ -116,6 +115,8 @@ Unlike `arrange()` and `filter()` it can also optionally modify the columns.
 The first argument is the data frame.
 The second and subsequent arguments are the conditions that must be true to keep the row.
 For example, we could find all flights that departed more than 120 minutes (two hours) late:
+
+[^data-transform-1]: Later, you'll learn about the `slice_*()` family, which allows you to choose rows based on their positions.
 
 ```{r}
 flights |> 
@@ -279,6 +280,8 @@ flights |>
 
 By default, `mutate()` adds new columns on the right-hand side of your dataset, which makes it difficult to see what's happening here.
 We can use the `.before` argument to instead add the variables to the left-hand side[^data-transform-2]:
+
+[^data-transform-2]: Remember that in RStudio, the easiest way to see a dataset with many columns is `View()`.
 
 ```{r}
 flights |> 
@@ -573,6 +576,8 @@ This means subsequent operations will now work "by month".
 The most important grouped operation is a summary, which, if being used to calculate a single summary statistic, reduces the data frame to have a single row for each group.
 In dplyr, this operation is performed by `summarize()`[^data-transform-3], as shown by the following example, which computes the average departure delay by month:
 
+[^data-transform-3]: Or `summarise()`, if you prefer British English.
+
 ```{r}
 flights |> 
   group_by(month) |> 
@@ -836,6 +841,8 @@ When we plot the skill of the batter (measured by the batting average, `performa
 
 2.  There's a positive correlation between skill (`performance`) and opportunities to hit the ball (`n`) because teams want to give their best batters the most opportunities to hit the ball.
 
+[^data-transform-4]: \*cough\* the law of large numbers \*cough\*.
+
 ```{r}
 #| warning: false
 #| fig-alt: |
@@ -873,11 +880,3 @@ We'll return to that in the Transform part of the book, where each chapter provi
 
 In the next chapter, we'll pivot back to workflow to discuss the importance of code style and keeping your code well organized to make it easy for you and others to read and understand.
 ::::
-
-[^data-transform-1]: Later, you'll learn about the `slice_*()` family, which allows you to choose rows based on their positions.
-
-[^data-transform-2]: Remember that in RStudio, the easiest way to see a dataset with many columns is `View()`.
-
-[^data-transform-3]: Or `summarise()`, if you prefer British English.
-
-[^data-transform-4]: \*cough\* the law of large numbers \*cough\*.
