@@ -42,7 +42,7 @@ jobs:
 
       - name: Install dataframe
         run: |
-          cabal install --lib dataframe --allow-order
+          cabal install --lib dataframe --allow-older
 
       - name: Render book to all format
         # Add any command line argument needed
