@@ -128,18 +128,6 @@ Here we introduce two options for including interactivity in your Quarto documen
 ### htmlwidgets
 
 HTML is an interactive format, and you can take advantage of that interactivity with **htmlwidgets**, R functions that produce interactive HTML visualizations.
-For example, take the **leaflet** map below.
-If you're viewing this page on the web, you can drag the map around, zoom in and out, etc.
-You obviously can't do that in a book, so Quarto automatically inserts a static screenshot for you.
-
-```{r}
-#| fig-alt: Leaflet map of Maungawhau / Mount Eden.
-library(leaflet)
-leaflet() |>
-  setView(174.764, -36.877, zoom = 16) |> 
-  addTiles() |>
-  addMarkers(174.764, -36.877, popup = "Maungawhau") 
-```
 
 The great thing about htmlwidgets is that you don't need to know anything about HTML or JavaScript to use them.
 All the details are wrapped inside the package, so you don't need to worry about it.

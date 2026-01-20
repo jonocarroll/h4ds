@@ -4,4 +4,46 @@ Welcome to "Haskell for Data Science"!
 
 This is a "translation" of "R for Data Science" using Haskell and the [dataHaskell](https://www.datahaskell.org/) ecosystem.
 
-Haskell offers some unique features not found in R such as strong typing and a stronger functional programming style.
+Data science is, at its heart, the process of transforming data through a series of well-defined steps.
+We take raw inputs, apply mathematical transformations, and produce insights.
+When you describe it that way, it sounds exactly like functional programming.
+
+So why has Haskell lagged in the space?
+One of the biggest hurdles for Haskell in the data community has been the perception of friction.
+Traditionally, data science requires the iteration speed of scripting.
+In the past, Haskell’s strict focus on type safety meant that "easy" things—like quickly peeking at a CSV or plotting a rough trend—felt unnecessarily hard compared to a few lines of Python.
+There has never been a gateway into the rest of the ecosystem.
+
+However, the landscape has changed.
+With the emergence of modern tools, Haskell is emerging as a solid contender in the data science space:
+
+-   Interactive Exploration: Tools like IHaskell (a Jupyter kernel for Haskell) allow for the same "notebook-style" iterative workflow you find in Python or R. You can experiment, visualize data in real-time, and iterate on models without a full compile cycle.
+-   The Dataframe Revolution: Libraries like `dataframe` have smoothed the rough edges of data manipulation. You get a familiar, user-friendly interface for handling tabular data, but with the massive advantage of Haskell’s safety net underneath.
+
+## Why Haskell Works for Data Science
+
+In this book, we argue that Haskell is a premier language for data science for three fundamental reasons:
+
+-   Correctness is a Feature, Not an Afterthought: In many languages, "data cleaning" is a defensive process where you hope you caught every edge case. In Haskell, the type system helps you define exactly what your data can and cannot be. It forces you to handle the "missing" or "broken" cases upfront, making your analysis significantly more robust.
+-   The "Lego" Effect (Compositionality): Haskell functions are small, isolated, and easy to test. Because functions are "pure," you can snap them together like Lego bricks to build complex pipelines. You don't have to worry about a function on page 50 of your script accidentally changing a global variable that breaks a plot on page 100.
+-   High-Level Abstractions, Low-Level Speed: Haskell allows you to write code that looks like math but runs like C. You get to work with high-level concepts—like folding over a dataset or mapping a neural network layer—while the compiler handles the heavy lifting of optimization and parallelization.
+
+## A Practical Shift in Perspective
+
+This book follows the philosophy that you don't need to be a mathematician to use Haskell; you just need to be someone who values clarity and reliability.
+We move away from the "scripting" mindset—where code is often disposable and fragile—and toward an engineering mindset, where your data tools are built to last.
+
+This book is a port of the workflows popularized by R for Data Science.
+We follow the same core philosophy: data science is a cycle of importing, tidying, transforming, and modeling data.
+
+Throughout these chapters, we will explore:
+
+-   Import and Tidy: How to use Haskell’s type system to define your data "schema" for compile-time safety.
+-   Transform: Instead of "praying" that a column exists during a join, we will use functional transformations to ensure our data manipulations are mathematically sound and free of side effects.
+-   Visualize: How to use Haskell’s plotting libraries to generate publication-quality graphics directly from your data structures, maintaining a tight loop between your code and your results.
+-   Model: Moving beyond basic scripts to build models that are "correct-by-construction." We’ll see how Haskell’s abstraction allows us to write modeling code that is both highly readable and incredibly fast.
+-   Program: Mastering the functional tools—like pipes, folds, and monads—that allow you to automate your workflow without creating a "spaghetti code" nightmare.
+
+Haskell shouldn't a hurdle to jump over; it should empower you to do the kind of transformation and logic that data science requires.
+
+It’s time we started using it.
