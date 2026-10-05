@@ -42,7 +42,8 @@ jobs:
 
       - name: Install dataframe
         run: |
-          cabal install --lib dataframe --enable-tests --allow-older --allow-newer
+          cabal update
+          cabal install --lib dataframe --allow-older --allow-newer -fwith-csv-th
 
       - name: Render book to all format
         # Add any command line argument needed
